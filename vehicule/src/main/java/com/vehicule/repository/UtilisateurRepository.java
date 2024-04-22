@@ -8,4 +8,5 @@
 		@Repository
 		public interface UtilisateurRepository extends JpaRepository<Utilisateur, Integer> {
 		
+			Utilisateur findByLoginAndMdp( String string, String string2 );
 	}

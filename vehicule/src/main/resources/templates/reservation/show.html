@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="https://www.thymeleaf.org">
+	
+	
+<head>
+<meta charset="Utf-8">
+
+</head>
+<body>
+<th:block th:insert="~{commun :: head}"></th:block>
+
+
+	<th:block th:insert="~{commun :: header}"></th:block>
+<main class="container-fluid">
+	
+		<h2>Détail reservation </h2>
+		
+		
+		<table class="table table-striped table-hover">
+			<tr class="table-dark">
+				<th>Date debut</th>
+				<th>date fin</th>
+				<th>cout total</th>
+				<th>Action</th>
+			</tr>
+			
+			<tr>
+				
+				
+				<td th:text="${reservation.dateDebut}"></td>
+				<td th:text="${reservation.dateFin}"></td>
+				<td th:text="${reservation.coutTotal}"></td>
+				
+				<td>
+					<a th:href="@{/reservation/update/__${reservation.id}__}"><i class="fa-solid fa-pen"></i></a>
+					- 
+					<a th:href="@{/reservation/delete/__${reservation.id}__}"><i class="fa-solid fa-trash"></i></a>
+				</td>
+			</tr>
+			
+		</table>		
+		</main>
+		<!--<th:block th:insert="~{commun :: footer}"></th:block>-->
+		
+
+</body>
+</html>

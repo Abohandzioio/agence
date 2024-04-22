@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="https://www.thymeleaf.org">
+	
+	
+<head>
+<meta charset="Utf-8">
+
+</head>
+<body>
+<th:block th:insert="~{commun :: head}"></th:block>
+
+
+	<th:block th:insert="~{commun :: header}"></th:block>
+<main class="container-fluid">
+	
+		<h2>Détail agence </h2>
+		
+		
+		<table class="table table-striped table-hover">
+			<tr class="table-dark">
+				<th>Nom</th>
+				<th>Email</th>
+				<th>Telephone</th>
+				<th>Adresse</th>
+				<th>Code postale</th>
+				<th>Ville</th>
+				<th>Action</th>
+			</tr>
+			
+			<tr>
+				
+				
+				<td th:text="${agence.nom}"></td>
+				<td th:text="${agence.email}"></td>
+				<td th:text="${agence.tel}"></td>
+				<td th:text="${agence.rue}"></td>
+				<td th:text="${agence.cp}"></td>
+				<td th:text="${agence.ville}"></td>
+				<td>
+					<a th:href="@{/agence/update/__${agence.id_agence}__}"><i class="fa-solid fa-pen"></i></a>
+					- 
+					<a th:href="@{/agence/delete/__${agence.id_agence}__}"><i class="fa-solid fa-trash"></i></a>
+				</td>
+			</tr>
+			
+		</table>		</main>
+		<!--<th:block th:insert="~{commun :: footer}"></th:block>-->
+		
+
+</body>
+</html>

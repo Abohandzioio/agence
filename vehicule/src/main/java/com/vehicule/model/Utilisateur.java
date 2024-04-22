@@ -1,10 +1,13 @@
 package com.vehicule.model;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
@@ -39,12 +42,26 @@ public class Utilisateur {
     
     @Column( length = 8 )
     private String         type_profil;
+    
+    @Column( length = 20 )
+    private String         adresse;
+    
+    @Column( length = 5 )
+    private int         cp;
+    
+    @Column( length = 10 )
+    private String         ville;
+    
+    @Column( length = 8 )
+    private int         tel;
+    
+    @OneToMany(mappedBy= "user")
+    private List<Reservation>reservation;
+    
+    @OneToMany(mappedBy= "user")
+    private List<Commentaire>commentaire;
 
-	@Override
-	public String toString() {
-		return "Utilisateur [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", login=" + login + ", email=" + email
-				+ ", mdp=" + mdp + ", type_profil=" + type_profil + "]";
-	}
+	
 
 	
 

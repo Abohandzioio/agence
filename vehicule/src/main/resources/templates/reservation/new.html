@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="https://www.thymeleaf.org">
+	<th:block th:insert="~{commun :: head}"></th:block>
+
+<body>
+
+	<th:block th:insert="~{commun :: header}"></th:block>
+	
+	<main class="container-fluid">
+		<h2 class="text-center">Ajouter une Reservation</h2>
+		
+		<form th:action="@{/reservation}" method="post" th:object="${reservation}">
+		<input type="hidden" th:field="*{id}"/>
+			<div class="row">
+				<div class="col-6 form-group">
+					<label for="">Date debut de la reservation</label>
+					<input type="date" th:field="*{dateDebut}" class="form-control" />
+					<div th:if="${#fields.hasErrors('dateDebut')}" th:errors="*{dateDebut}" class="alert alert-danger p-1 mt-1"></div>
+				</div>
+				
+				<div class="col-6 form-group">
+					<label for="">Date finale</label>
+					<input type="date" th:field="*{dateFin}" class="form-control" />
+					<div th:if="${#fields.hasErrors('dateFin')}" th:errors="*{dateFin}" class="alert alert-danger p-1 mt-1"></div>
+				</div>
+				
+				<div class="col-6 form-group">
+					<label for="">Cout total</label>
+					<input type="text" th:field="coutTotal}" class="form-control" />
+					<div th:if="${#fields.hasErrors('coutTotal')}" th:errors="*{coutTotal}" class="alert alert-danger p-1 mt-1"></div>
+				</div>
+				
+				<div class="col-6">
+					<input type="submit" class="btn btn-success mt-4" />
+				</div>
+			</div>
+		
+		</form>
+		
+	</main>
+	
+	<th:block th:insert="~{commun :: footer}"></th:block>
+
+</body>
+</html>
+
+
+
+
+

@@ -1,15 +1,21 @@
 package com.vehicule.model;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import lombok.Getter;
 import lombok.Setter;
+
 @Getter
 @Setter
 @Entity
@@ -18,7 +24,7 @@ public class Vehicule {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private String type;
+    private String categorie;
 
     @DecimalMin(value = "45.0", message = "Le prix journalier doit être d'au moins 45.0 €")
     private double prixJournalier;
@@ -38,17 +44,24 @@ public class Vehicule {
     private String         cylindre;
     
     @Column( length = 30 )
-    private String         longueur;
+    private int         longueur;
+    
+    @OneToMany(mappedBy= "vehicule")
+    private List<Reservation>reservation;
+    
+    @OneToMany(mappedBy= "vehicule")
+    private List<Commentaire>commentaire;
+    
+    @ManyToOne
+    @JoinColumn(name = "id_agence")
+    private Agence agence;
 
-	@Override
-	public String toString() {
-		return "Vehicule [id=" + id + ", type=" + type + ", prixJournalier=" + prixJournalier + ", couleur=" + couleur
-				+ ", poids=" + poids + ", nombrePortes=" + nombrePortes + ", cylindre=" + cylindre + ", longueur="
-				+ longueur + "]";
+	
 	}
     
     
 
    
-}
+
+
 
